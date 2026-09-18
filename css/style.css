@@ -1,0 +1,308 @@
+@charset "UTF-8";
+/*! modern-normalize v3.0.1 | MIT License | https://github.com/sindresorhus/modern-normalize */
+/*
+Document
+========
+*/
+/**
+Use a better box model (opinionated).
+*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3) */
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.15; /* 1. Correct the line height in all browsers. */
+  -webkit-text-size-adjust: 100%; /* 2. Prevent adjustments of font size after orientation changes in iOS. */
+  tab-size: 4; /* 3. Use a more readable tab size (opinionated). */
+}
+
+/*
+Sections
+========
+*/
+body {
+  margin: 0; /* Remove the margin in all browsers. */
+}
+
+/*
+Text-level semantics
+====================
+*/
+/**
+Add the correct font weight in Chrome and Safari.
+*/
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+2. Correct the odd 'em' font sizing in all browsers.
+*/
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+Add the correct font size in all browsers.
+*/
+small {
+  font-size: 80%;
+}
+
+/**
+Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+*/
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+Tabular data
+============
+*/
+/**
+Correct table border color inheritance in Chrome and Safari. (https://issues.chromium.org/issues/40615503, https://bugs.webkit.org/show_bug.cgi?id=195016)
+*/
+table {
+  border-color: currentcolor;
+}
+
+/*
+Forms
+=====
+*/
+/**
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+Correct the inability to style clickable types in iOS and Safari.
+*/
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
+*/
+legend {
+  padding: 0;
+}
+
+/**
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+progress {
+  vertical-align: baseline;
+}
+
+/**
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to 'inherit' in Safari.
+*/
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Interactive
+===========
+*/
+/*
+Add the correct display in Chrome and Safari.
+*/
+summary {
+  display: list-item;
+}
+
+h1 {
+  font-size: clamp(28px, 5vw, 72px);
+  font-weight: 600;
+  line-height: 1.05;
+  margin: 0;
+}
+
+h2 {
+  font-size: clamp(26px, 4vw, 60px);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text-accent);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding-inline: 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: 24px;
+  }
+}
+@media (max-width: 380px) {
+  .container {
+    padding-inline: 16px;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+/* ============ LIGHT THEME (по умолчанию) ============ */
+:root,
+[data-theme=light] {
+  /* Text */
+  --text-primary: #403F3D;
+  --text-inverse: #E1D4C9;
+  --text-accent: #B0907A;
+  /* Background */
+  --bg-page: #E1D4C9;
+  --bg-container: #665F55;
+  --bg-overlay: rgba(64, 63, 61, 0.8); /* #403F3D @ 80% */
+  /* Border */
+  --border-primary: #C1B6AD;
+  --border-inverse: #665F55;
+  /* Алиасы для удобства */
+  --bg: var(--bg-page);
+  --text: var(--text-primary);
+  --accent: var(--text-accent);
+  --border: var(--border-primary);
+}
+
+/* ============ DARK THEME ============ */
+[data-theme=dark] {
+  /* Text — те же значения, что и в светлой */
+  --text-primary: #E1D4C9;
+  --text-inverse: #E1D4C9;
+  --text-accent: #B0907A;
+  /* Background */
+  --bg-page: #292826;
+  --bg-container: rgba(64, 63, 61, 0.3); /* #403F3D @ 30% */
+  --bg-overlay: rgba(41, 40, 38, 0.8); /* #292826 @ 80% */
+  /* Border */
+  --border-primary: #665F55;
+  --border-inverse: #C1B6AD;
+  /* Алиасы */
+  --bg: var(--bg-page);
+  --text: var(--text-primary);
+  --accent: var(--text-accent);
+  --border: var(--border-primary);
+}/*# sourceMappingURL=style.css.map */
