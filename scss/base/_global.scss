@@ -4,11 +4,28 @@ html {
   scroll-behavior: smooth;
 }
 
+
+// ---------- Прижатие футера к низу ----------
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   font-family: $font-main;
   background: var(--bg-page);
   color: var(--text-primary);
   transition: background $transition-base, color $transition-base;
+}
+
+main {
+  flex: 1 0 auto;   // растягивается, прижимая футер вниз
+}
+
+// header и footer — по умолчанию flex: 0 0 auto (это их стандарт),
+// можно явно не задавать, но для читаемости:
+header,
+footer {
+  flex: 0 0 auto;
 }
 
 .container {

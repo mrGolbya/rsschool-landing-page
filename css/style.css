@@ -214,10 +214,22 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: "Inter", sans-serif;
   background: var(--bg-page);
   color: var(--text-primary);
   transition: background 0.3s ease, color 0.3s ease;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+header,
+footer {
+  flex: 0 0 auto;
 }
 
 .container {
@@ -279,7 +291,7 @@ section[id] {
   --bg-overlay: rgba(64, 63, 61, 0.8); /* #403F3D @ 80% */
   /* Border */
   --border-primary: #C1B6AD;
-  --border-inverse: #665F55;
+  --border-inverse: #B6AEA7;
   /* Алиасы для удобства */
   --bg: var(--bg-page);
   --text: var(--text-primary);
