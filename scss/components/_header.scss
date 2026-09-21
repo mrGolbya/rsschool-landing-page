@@ -125,14 +125,14 @@
 
     // ---------- SUN ----------
     &--sun {
-      --icon: url('../../img/icons/sun.svg');
+      --icon: url('../img/icons/sun.svg');
       color: var(--text-inverse);       // цвет глифа — контраст к фону
       background: var(--text-accent);   // активный круг (светлая тема)
     }
 
     // ---------- MOON ----------
     &--moon {
-      --icon: url('../../img/icons/moon.svg');
+      --icon: url('../img/icons/moon.svg');
       color: var(--text-primary);
       background: transparent;
     }

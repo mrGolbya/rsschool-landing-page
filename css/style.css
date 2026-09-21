@@ -408,12 +408,12 @@ section[id] {
   transition: background-color 0.3s ease;
 }
 .theme-toggle__icon--sun {
-  --icon: url('../../img/icons/sun.svg');
+  --icon: url('../img/icons/sun.svg');
   color: var(--text-inverse);
   background: var(--text-accent);
 }
 .theme-toggle__icon--moon {
-  --icon: url('../../img/icons/moon.svg');
+  --icon: url('../img/icons/moon.svg');
   color: var(--text-primary);
   background: transparent;
 }
