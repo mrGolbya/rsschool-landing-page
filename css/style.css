@@ -589,6 +589,120 @@ section[id] {
     padding-block: 16px;
   }
 }
+.hero__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 640px;
+  padding: 100px;
+  overflow: hidden;
+  border-radius: 40px;
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.55) 35%, rgba(0, 0, 0, 0.15) 65%, rgba(0, 0, 0, 0) 85%);
+}
+.hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 530px;
+  color: var(--text-inverse);
+}
+.hero__title {
+  font-size: clamp(38px, 4.5vw, 64px);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--text-inverse);
+}
+.hero__title-accent {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text-accent);
+}
+.hero__text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-inverse);
+  opacity: 0.9;
+  max-width: 460px;
+}
+.hero__btn {
+  align-self: flex-start;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .hero__container {
+    min-height: 540px;
+    padding: 60px 40px;
+  }
+  .hero__content, .hero__text {
+    max-width: 100%;
+  }
+}
+@media (max-width: 380px) {
+  .hero__container {
+    min-height: 460px;
+    padding: 40px 24px;
+  }
+  .hero__title {
+    font-size: clamp(32px, 8vw, 42px);
+  }
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 60px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-primary);
+  background: var(--bg-page);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.btn__text {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.btn__icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  width: 0;
+  margin-left: 0;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: width 0.3s ease, margin-left 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+.btn:hover, .btn:focus-visible {
+  background: var(--text-inverse);
+}
+.btn:hover .btn__icon, .btn:focus-visible .btn__icon {
+  width: 20px;
+  margin-left: 4px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .footer {
   margin-top: 100px;
   padding-bottom: 40px;
