@@ -84,6 +84,90 @@
         </div>
       </div>
     </section>
+<section class="slider container" id="slider">
+  <h2 class="slider__title">
+    Choose your <em>favorite</em> coffee
+  </h2>
+
+  <div class="slider__wrapper">
+
+    <!-- Стрелка назад -->
+    <button class="slider__arrow slider__arrow--prev" type="button" aria-label="Предыдущий слайд">
+      <img class="slider__arrow-icon" src="./img/icons/arrow-left.svg" alt="" width="24" height="24">
+    </button>
+
+    <!-- Область просмотра слайдов -->
+    <div class="slider__viewport">
+      <ul class="slider__track">
+
+        <!-- Слайд 1 -->
+        <li class="slider__slide" data-slide="0">
+          <img
+            class="slider__image"
+            src="./img/slider/smores-frappuccino.png"
+            alt="S'mores Frappuccino"
+            width="330"
+            height="530"
+          >
+          <h3 class="slider__name">S'mores Frappuccino</h3>
+          <p class="slider__desc">
+            This new drink takes an espresso and mixes it with brown
+            sugar and cinnamon before being topped with oat milk.
+          </p>
+          <span class="slider__price">$5.50</span>
+        </li>
+
+        <!-- Слайд 2 -->
+        <li class="slider__slide" data-slide="1">
+          <img
+            class="slider__image"
+            src="./img/slider/caramel-macchiato.png"
+            alt="Caramel Macchiato"
+            width="330"
+            height="530"
+          >
+          <h3 class="slider__name">Caramel Macchiato</h3>
+          <p class="slider__desc">
+            Freshly steamed milk with vanilla-flavored syrup marked
+            with espresso and topped with a caramel drizzle.
+          </p>
+          <span class="slider__price">$4.80</span>
+        </li>
+
+        <!-- Слайд 3 -->
+        <li class="slider__slide" data-slide="2">
+          <img
+            class="slider__image"
+            src="./img/slider/caffe-latte.png"
+            alt="Caffe Latte"
+            width="330"
+            height="530"
+          >
+          <h3 class="slider__name">Caffe Latte</h3>
+          <p class="slider__desc">
+            Rich, full-bodied espresso in steamed milk, lightly
+            topped with foam and a dusting of cocoa.
+          </p>
+          <span class="slider__price">$4.20</span>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- Стрелка вперёд -->
+        <button class="slider__arrow slider__arrow--next" type="button" aria-label="Следующий слайд">
+      <img class="slider__arrow-icon" src="./img/icons/arrow-right.svg" alt="" width="24" height="24">
+    </button>
+
+  </div>
+
+  <!-- Точки-индикаторы -->
+  <div class="slider__dots" role="tablist" aria-label="Навигация по слайдам">
+    <button class="slider__dot slider__dot--active" type="button" role="tab" aria-label="Слайд 1" aria-selected="true" data-dot="0"></button>
+    <button class="slider__dot" type="button" role="tab" aria-label="Слайд 2" aria-selected="false" data-dot="1"></button>
+    <button class="slider__dot" type="button" role="tab" aria-label="Слайд 3" aria-selected="false" data-dot="2"></button>
+  </div>
+</section>
   </main>
 <footer class="footer">
   <div class="container">
