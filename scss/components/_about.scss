@@ -1,0 +1,101 @@
+@use '../base/variables' as *;
+
+// ============================================================
+// Блок: about
+// ============================================================
+.about {
+  // .container даёт ширину и padding-inline
+  padding-block: 100px;
+
+  // ----------------------------------------------------------
+  // Заголовок-абзац
+  // ----------------------------------------------------------
+  &__title {
+    font-size: clamp(28px, 3.6vw, 60px);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--text-primary);
+    max-width: 1060px;
+    margin-bottom: 40px;
+
+    em {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--text-accent);
+    }
+  }
+
+  // ----------------------------------------------------------
+  // Сетка галереи
+  // ----------------------------------------------------------
+  &__gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  // ----------------------------------------------------------
+  // Колонка (flex-column с двумя фото)
+  // ----------------------------------------------------------
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  // ----------------------------------------------------------
+  // Изображения
+  // ----------------------------------------------------------
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: $radius-md;  // 24px
+    display: block;
+
+    // разные высоты, как в макете
+    &--tall  { aspect-ratio: 1 / 1; }     // квадрат ~600×600
+    &--short { aspect-ratio: 600 / 430; } // ~600×430
+  }
+}
+
+// ============================================================
+// Адаптив
+// ============================================================
+@media (max-width: $bp-md) {
+  .about {
+    padding-block: 60px;
+
+    &__title {
+      margin-bottom: 32px;
+    }
+
+    &__gallery {
+      gap: 24px;
+    }
+
+    &__column {
+      gap: 24px;
+    }
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .about {
+    padding-block: 40px;
+
+    &__gallery {
+      grid-template-columns: 1fr;  // одна колонка
+      gap: 20px;
+    }
+
+    &__column {
+      gap: 20px;
+    }
+
+    // на мобилке — все фото одинаковой «широкой» пропорции
+    &__image {
+      &--tall  { aspect-ratio: 4 / 3; }
+      &--short { aspect-ratio: 4 / 3; }
+    }
+  }
+}
