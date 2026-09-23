@@ -380,6 +380,13 @@ section[id] {
 
 .logo__image {
   display: block;
+  width: 100px;
+  height: auto;
+  transition: opacity 0.3s ease;
+}
+
+[data-theme=dark] .logo__image {
+  content: url("../../img/logo-dark.svg");
 }
 
 .theme-toggle {

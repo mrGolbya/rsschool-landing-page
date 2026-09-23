@@ -73,7 +73,17 @@
 // Блок: logo
 // ============================================================
 .logo {
-  &__image { display: block; }
+  &__image {
+    display: block;
+    width: 100px;
+    height: auto;
+    transition: opacity $transition-base;
+  }
+}
+
+// Подмена логотипа в тёмной теме
+[data-theme="dark"] .logo__image {
+  content: url('../../img/logo-dark.svg');
 }
 
 // ============================================================
