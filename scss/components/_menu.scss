@@ -59,9 +59,6 @@
       background: var(--bg-container);
       border-color: var(--bg-container);
 
-      .menu-tabs__icon-wrap {
-        background: var(--text-inverse);
-      }
     }
 
     &--active {
@@ -131,6 +128,7 @@
 
   &:hover {
     border-color: var(--text-accent);
+    cursor: pointer;
 
     .menu-card__image {
       transform: scale(1);

@@ -1118,9 +1118,6 @@ section[id] {
   background: var(--bg-container);
   border-color: var(--bg-container);
 }
-.menu-tabs__btn:hover .menu-tabs__icon-wrap, .menu-tabs__btn:focus-visible .menu-tabs__icon-wrap, .menu-tabs__btn--active .menu-tabs__icon-wrap {
-  background: var(--text-inverse);
-}
 .menu-tabs__btn--active {
   cursor: default;
 }
@@ -1166,6 +1163,7 @@ section[id] {
 }
 .menu-card:hover {
   border-color: var(--text-accent);
+  cursor: pointer;
 }
 .menu-card:hover .menu-card__image {
   transform: scale(1);
