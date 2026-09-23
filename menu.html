@@ -57,7 +57,176 @@
     </div>
   </header>
   <main class="main">
-    
+
+<!-- ============================================================
+     MENU PAGE
+     ============================================================ -->
+<section class="menu-page container">
+  <h1 class="menu-page__title">
+    Behind each of our cups<br>
+    hides an <em>amazing surprise</em>
+  </h1>
+
+  <!-- ==================== Табы ==================== -->
+  <div class="menu-tabs" role="tablist" aria-label="Категории меню">
+
+    <button
+      class="menu-tabs__btn menu-tabs__btn--active"
+      type="button"
+      role="tab"
+      aria-selected="true"
+      aria-controls="tab-coffee"
+      id="tab-coffee-btn"
+      data-tab="coffee"
+    >
+      <span class="menu-tabs__icon-wrap">
+        <img class="menu-tabs__icon" src="./img/icons/tab-coffee.png" alt="" width="20" height="20">
+      </span>
+      <span class="menu-tabs__label">Coffee</span>
+    </button>
+
+    <button
+      class="menu-tabs__btn"
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-controls="tab-tea"
+      id="tab-tea-btn"
+      data-tab="tea"
+    >
+      <span class="menu-tabs__icon-wrap">
+        <img class="menu-tabs__icon" src="./img/icons/tab-tea.png" alt="" width="20" height="20">
+      </span>
+      <span class="menu-tabs__label">Tea</span>
+    </button>
+
+    <button
+      class="menu-tabs__btn"
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-controls="tab-dessert"
+      id="tab-dessert-btn"
+      data-tab="dessert"
+    >
+      <span class="menu-tabs__icon-wrap">
+        <img class="menu-tabs__icon" src="./img/icons/tab-dessert.png" alt="" width="20" height="20">
+      </span>
+      <span class="menu-tabs__label">Dessert</span>
+    </button>
+
+  </div>
+
+  <!-- ==================== Панель: Coffee ==================== -->
+  <div class="menu-panel" id="tab-coffee" role="tabpanel" aria-labelledby="tab-coffee-btn" data-panel="coffee">
+    <ul class="menu-grid">
+
+      <li class="menu-card">
+        <div class="menu-card__image-wrap">
+          <img class="menu-card__image" src="./img/menu/irish-coffee.png" alt="Irish coffee" width="310" height="310">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__name">Irish coffee</h3>
+          <p class="menu-card__desc">Fragrant black coffee with Jameson Irish whiskey and whipped milk</p>
+          <span class="menu-card__price">$7.00</span>
+        </div>
+      </li>
+
+      <li class="menu-card">
+        <div class="menu-card__image-wrap">
+          <img class="menu-card__image" src="./img/menu/kahlua-coffee.png" alt="Kahlua coffee" width="310" height="310">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__name">Kahlua coffee</h3>
+          <p class="menu-card__desc">Classic coffee with milk and Kahlua liqueur under a cap of frothed milk</p>
+          <span class="menu-card__price">$7.00</span>
+        </div>
+      </li>
+
+      <li class="menu-card">
+        <div class="menu-card__image-wrap">
+          <img class="menu-card__image" src="./img/menu/honey-raf.png" alt="Honey raf" width="310" height="310">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__name">Honey raf</h3>
+          <p class="menu-card__desc">Espresso with frothed milk, cream and aromatic honey</p>
+          <span class="menu-card__price">$5.50</span>
+        </div>
+      </li>
+
+      <li class="menu-card">
+        <div class="menu-card__image-wrap">
+          <img class="menu-card__image" src="./img/menu/ice-cappuccino.png" alt="Ice cappuccino" width="310" height="310">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__name">Ice cappuccino</h3>
+          <p class="menu-card__desc">Cappuccino with soft thick foam in summer version with ice</p>
+          <span class="menu-card__price">$5.00</span>
+        </div>
+      </li>
+
+      <li class="menu-card">
+        <div class="menu-card__image-wrap">
+          <img class="menu-card__image" src="./img/menu/espresso.png" alt="Espresso" width="310" height="310">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__name">Espresso</h3>
+          <p class="menu-card__desc">Classic black coffee</p>
+          <span class="menu-card__price">$4.50</span>
+        </div>
+      </li>
+
+      <li class="menu-card">
+        <div class="menu-card__image-wrap">
+          <img class="menu-card__image" src="./img/menu/latte.png" alt="Latte" width="310" height="310">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__name">Latte</h3>
+          <p class="menu-card__desc">Espresso coffee with the addition of steamed milk and dense milk foam</p>
+          <span class="menu-card__price">$5.50</span>
+        </div>
+      </li>
+
+      <li class="menu-card">
+        <div class="menu-card__image-wrap">
+          <img class="menu-card__image" src="./img/menu/latte-macchiato.png" alt="Latte macchiato" width="310" height="310">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__name">Latte macchiato</h3>
+          <p class="menu-card__desc">Espresso with frothed milk and chocolate</p>
+          <span class="menu-card__price">$5.50</span>
+        </div>
+      </li>
+
+      <li class="menu-card">
+        <div class="menu-card__image-wrap">
+          <img class="menu-card__image" src="./img/menu/coffee-cognac.png" alt="Coffee with cognac" width="310" height="310">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__name">Coffee with cognac</h3>
+          <p class="menu-card__desc">Fragrant black coffee with cognac and whipped cream</p>
+          <span class="menu-card__price">$6.50</span>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- ==================== Панель: Tea (скрыта) ==================== -->
+  <div class="menu-panel" id="tab-tea" role="tabpanel" aria-labelledby="tab-tea-btn" data-panel="tea" hidden>
+    <ul class="menu-grid">
+      <!-- карточки чая -->
+    </ul>
+  </div>
+
+  <!-- ==================== Панель: Dessert (скрыта) ==================== -->
+  <div class="menu-panel" id="tab-dessert" role="tabpanel" aria-labelledby="tab-dessert-btn" data-panel="dessert" hidden>
+    <ul class="menu-grid">
+      <!-- карточки десертов -->
+    </ul>
+  </div>
+
+</section>
   </main>
   <footer class="footer">
   <div class="container">
