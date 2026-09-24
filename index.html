@@ -169,11 +169,27 @@
   </div>
 
   <!-- Точки-индикаторы -->
-  <div class="slider__dots" role="tablist" aria-label="Навигация по слайдам">
-    <button class="slider__dot slider__dot--active" type="button" role="tab" aria-label="Слайд 1" aria-selected="true" data-dot="0"></button>
-    <button class="slider__dot" type="button" role="tab" aria-label="Слайд 2" aria-selected="false" data-dot="1"></button>
-    <button class="slider__dot" type="button" role="tab" aria-label="Слайд 3" aria-selected="false" data-dot="2"></button>
-  </div>
+<div class="slider__dots">
+  <button
+    class="slider__dot slider__dot--active"
+    type="button"
+    aria-label="Показать слайд 1"
+    aria-current="true"
+    data-dot="0"
+  ></button>
+  <button
+    class="slider__dot"
+    type="button"
+    aria-label="Показать слайд 2"
+    data-dot="1"
+  ></button>
+  <button
+    class="slider__dot"
+    type="button"
+    aria-label="Показать слайд 3"
+    data-dot="2"
+  ></button>
+</div>
 </section>
 <section class="about container" id="about">
   <h2 class="about__title">
