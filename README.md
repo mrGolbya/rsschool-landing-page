@@ -1,1 +1,1 @@
-# rsschool-landing-page
+*[задание Landing Page(Coffee House)](https://github.com/rolling-scopes-school/tasks/blob/master/fullstack-engineering/tasks/landing-page/README.md)

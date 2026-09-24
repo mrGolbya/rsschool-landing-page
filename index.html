@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee House</title>
+  <link rel="icon" type="image/svg+xml" href="./img/logo-dark.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__container">
+
+      <!-- Логотип -->
+      <a href="./" class="header__logo logo" aria-label="Coffee House — на главную">
+  <img
+    class="logo__image"
+    src="./img/logo-light.svg"
+    alt="Coffee House"
+    width="100"
+    height="60"
+  >
+</a>
+
+      <!-- Основная навигация -->
+      <nav class="header__nav" aria-label="Основная навигация">
+        <ul class="header__list">
+          <li class="header__item">
+            <a href="./#slider" class="header__link">Favorite coffee</a>
+          </li>
+          <li class="header__item">
+            <a href="./#about" class="header__link">About</a>
+          </li>
+          <li class="header__item">
+            <a href="./#app" class="header__link">Mobile app</a>
+          </li>
+          <li class="header__item">
+            <a href="./#contacts" class="header__link">Contact us</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Действия справа -->
+      <div class="header__actions">
+
+  <!-- 1. Переключатель темы -->
+  <button class="theme-toggle" type="button" aria-label="Переключить светлую и тёмную тему">
+    <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+    <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+  </button>
+
+  <!-- 2. Кнопка Menu с чашкой (видна только на десктопе > 768px) -->
+<a href="menu.html" class="menu-link">
+  <span class="menu-link__text">Menu</span>
+  <span class="menu-link__icon" aria-hidden="true"></span>
+</a>
+
+  <!-- 3. Круглая кнопка-бургер (видна только ≤ 768px) -->
+  <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+    <span class="burger__lines" aria-hidden="true"></span>
+  </button>
+
+</div>
+    </div>
+  </header>
+  <main class="main">
+    <section class="hero">
+      <div class="container">
+        <div class="hero__container">
+          <img class="hero__bg" src="./img/hero-coffee.png" alt="" width="1440" height="640" aria-hidden="true">
+          <div class="hero__overlay" aria-hidden="true"></div>
+
+          <div class="hero__content">
+            <h1 class="hero__title">
+              <em class="hero__title-accent">Enjoy</em> premium<br>
+              coffee at our<br>
+              charming cafe
+            </h1>
+
+            <p class="hero__text">
+              With its inviting atmosphere and delicious coffee options, the Coffee
+              House Resource is a popular destination for coffee lovers and those
+              seeking a warm and inviting space to enjoy their favorite beverage.
+            </p>
+
+            <a href="menu.html" class="btn hero__btn">
+  <span class="btn__text">Menu</span>
+  <img class="btn__icon" src="./img/icons/coffee-cup.svg" alt="" width="20" height="20">
+</a>
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="slider container" id="slider">
+  <h2 class="slider__title">
+    Choose your <em>favorite</em> coffee
+  </h2>
+
+  <div class="slider__wrapper">
+
+    <!-- Стрелка назад -->
+    <button class="slider__arrow slider__arrow--prev" type="button" aria-label="Предыдущий слайд">
+      <img class="slider__arrow-icon" src="./img/icons/arrow-left.svg" alt="" width="24" height="24">
+    </button>
+
+    <!-- Область просмотра слайдов -->
+    <div class="slider__viewport">
+      <ul class="slider__track">
+
+        <!-- Слайд 1 -->
+        <li class="slider__slide" data-slide="0">
+          <img
+            class="slider__image"
+            src="./img/slider/smores-frappuccino.png"
+            alt="S'mores Frappuccino"
+            width="330"
+            height="530"
+          >
+          <h3 class="slider__name">S'mores Frappuccino</h3>
+          <p class="slider__desc">
+            This new drink takes an espresso and mixes it with brown
+            sugar and cinnamon before being topped with oat milk.
+          </p>
+          <span class="slider__price">$5.50</span>
+        </li>
+
+        <!-- Слайд 2 -->
+        <li class="slider__slide" data-slide="1">
+          <img
+            class="slider__image"
+            src="./img/slider/caramel-macchiato.png"
+            alt="Caramel Macchiato"
+            width="330"
+            height="530"
+          >
+          <h3 class="slider__name">Caramel Macchiato</h3>
+          <p class="slider__desc">
+            Freshly steamed milk with vanilla-flavored syrup marked
+            with espresso and topped with a caramel drizzle.
+          </p>
+          <span class="slider__price">$4.80</span>
+        </li>
+
+        <!-- Слайд 3 -->
+        <li class="slider__slide" data-slide="2">
+          <img
+            class="slider__image"
+            src="./img/slider/caffe-latte.png"
+            alt="Caffe Latte"
+            width="330"
+            height="530"
+          >
+          <h3 class="slider__name">Caffe Latte</h3>
+          <p class="slider__desc">
+            Rich, full-bodied espresso in steamed milk, lightly
+            topped with foam and a dusting of cocoa.
+          </p>
+          <span class="slider__price">$4.20</span>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- Стрелка вперёд -->
+        <button class="slider__arrow slider__arrow--next" type="button" aria-label="Следующий слайд">
+      <img class="slider__arrow-icon" src="./img/icons/arrow-right.svg" alt="" width="24" height="24">
+    </button>
+
+  </div>
+
+  <!-- Точки-индикаторы -->
+<div class="slider__dots">
+  <button
+    class="slider__dot slider__dot--active"
+    type="button"
+    aria-label="Показать слайд 1"
+    aria-current="true"
+    data-dot="0"
+  ></button>
+  <button
+    class="slider__dot"
+    type="button"
+    aria-label="Показать слайд 2"
+    data-dot="1"
+  ></button>
+  <button
+    class="slider__dot"
+    type="button"
+    aria-label="Показать слайд 3"
+    data-dot="2"
+  ></button>
+</div>
+</section>
+<section class="about container" id="about">
+  <h2 class="about__title">
+    Resource is <em>the perfect and cozy place</em> where
+    you can enjoy a variety of hot beverages, relax,
+    catch up with friends, or get some work done.
+  </h2>
+
+  <div class="about__gallery">
+
+    <!-- Левая колонка -->
+    <div class="about__column about__column--left">
+      <div class="about__image about__image--tall">
+        <img
+          src="./img/about/girl-coffee.jpg"
+          alt="Woman enjoying coffee in a cozy cafe"
+          width="600" height="600"
+        >
+      </div>
+      <div class="about__image about__image--short">
+        <img
+          src="./img/about/cup-table.jpg"
+          alt="Cup of coffee on a wooden table with lights"
+          width="600" height="430"
+        >
+      </div>
+    </div>
+
+    <!-- Правая колонка -->
+    <div class="about__column about__column--right">
+      <div class="about__image about__image--short">
+        <img
+          src="./img/about/man-laptop.jpg"
+          alt="Man drinking coffee while working on a laptop"
+          width="600" height="430"
+        >
+      </div>
+      <div class="about__image about__image--tall">
+        <img
+          src="./img/about/couple-coffee.jpg"
+          alt="Couple enjoying coffee together"
+          width="600" height="600"
+        >
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="app container" id="app">
+  <div class="app__content">
+
+    <h2 class="app__title">
+      <em>Download</em> our app<br>
+      to start ordering
+    </h2>
+
+    <p class="app__text">
+      Download the Resource app today and experience the comfort
+      of ordering your favorite coffee from wherever you are.
+    </p>
+
+    <div class="app__stores">
+
+      <!-- App Store -->
+      <a href="#" class="app__store-btn" aria-label="Download on the App Store">
+        <span class="app__store-icon app__store-icon--apple" aria-hidden="true"></span>
+        <span class="app__store-text">
+          <span class="app__store-label">Available on the</span>
+          <span class="app__store-name">App Store</span>
+        </span>
+      </a>
+
+      <!-- Google Play -->
+      <a href="#" class="app__store-btn" aria-label="Get it on Google Play">
+        <span class="app__store-icon app__store-icon--google" aria-hidden="true"></span>
+        <span class="app__store-text">
+          <span class="app__store-label">Available on</span>
+          <span class="app__store-name">Google Play</span>
+        </span>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="app__mockup">
+    <img
+      class="app__mockup-image"
+      src="./img/app/phones-mockup.png"
+      alt="Resource app on iPhone"
+      width="640"
+      height="640"
+    >
+  </div>
+</section>
+  </main>
+<footer class="footer" id="contacts">
+  <div class="container">
+    <div class="footer__container">
+
+      <div class="footer__left">
+        <h2 class="footer__slogan">
+          Sip, Savor, Smile.<br>
+          <em class="footer__slogan-accent">It's coffee time!</em>
+        </h2>
+
+        <ul class="footer__socials">
+          <li class="footer__social-item">
+            <a href="#" class="footer__social-link" aria-label="Twitter">
+              <img src="./img/icons/social-twitter.svg" alt="" width="24" height="24">
+            </a>
+          </li>
+          <li class="footer__social-item">
+            <a href="#" class="footer__social-link" aria-label="Instagram">
+              <img src="./img/icons/social-instagram.svg" alt="" width="24" height="24">
+            </a>
+          </li>
+          <li class="footer__social-item">
+            <a href="#" class="footer__social-link" aria-label="Facebook">
+              <img src="./img/icons/social-facebook.svg" alt="" width="24" height="24">
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer__right">
+        <h3 class="footer__heading">Contact us</h3>
+
+        <ul class="footer__contacts">
+          <li class="footer__contact-item">
+            <img class="footer__contact-icon" src="./img/icons/contact-pin.svg" alt="" width="20" height="20">
+            <a href="https://maps.google.com/?q=8558+Green+Rd,+LA" target="_blank" rel="noopener" class="footer__contact-text footer__contact-link">8558 Green Rd., LA</a>
+          </li>
+          <li class="footer__contact-item">
+            <img class="footer__contact-icon" src="./img/icons/contact-phone.svg" alt="" width="20" height="20">
+            <a href="tel:+16035550123" class="footer__contact-text footer__contact-link">+1 (603) 555-0123</a>
+          </li>
+          <li class="footer__contact-item">
+            <img class="footer__contact-icon" src="./img/icons/contact-clock.svg" alt="" width="20" height="20">
+            <a href="#" class="footer__contact-text footer__contact-link">Mon-Sat: 9:00-23:00</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</footer>
+<script src="./js/script.js" defer></script>
+</body>
+</html>

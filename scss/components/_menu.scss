@@ -1,0 +1,297 @@
+@use '../base/variables' as *;
+
+// ============================================================
+// Блок: menu-page
+// ============================================================
+.menu-page {
+  padding-block: 20px;
+
+  &__title {
+    font-size: clamp(28px, 4vw, 60px);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--text-primary);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 60px;
+
+    em {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--text-accent);
+    }
+  }
+}
+
+// ============================================================
+// Блок: menu-tabs
+// ============================================================
+.menu-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 60px;
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 5px 20px 5px 5px;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: transparent;
+    border: 1px solid var(--border-primary);
+    border-radius: $radius-pill;
+    cursor: pointer;
+    transition:
+      background $transition-base,
+      border-color $transition-base,
+      color $transition-base;
+
+    &:hover,
+    &:focus-visible,
+    &--active {
+      color: var(--text-inverse);
+      background: var(--bg-container);
+      border-color: var(--bg-container);
+
+    }
+
+    &--active {
+      cursor: default;
+    }
+  }
+
+  // ----------------------------------------------------------
+  // Кружок под иконкой — всегда светлый
+  // ----------------------------------------------------------
+  &__icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    background: var(--border-primary);
+    transition: background $transition-base;
+  }
+
+  &__icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  &__label {
+    line-height: 1;
+  }
+}
+
+// ============================================================
+// Блок: menu-panel
+// ============================================================
+.menu-panel {
+  &[hidden] {
+    display: none;
+  }
+}
+
+// ============================================================
+// Блок: menu-grid
+// ============================================================
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+// ============================================================
+// Блок: menu-card
+// ============================================================
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  border: 1px solid var(--border-primary);
+  border-radius: $radius-card;
+  background: transparent;
+  transition: border-color $transition-base;
+
+  &:hover {
+    border-color: var(--text-accent);
+    cursor: pointer;
+
+    .menu-card__image {
+      transform: scale(1);
+    }
+  }
+
+  // ----------------------------------------------------------
+  // Обёртка-обрезка
+  // ----------------------------------------------------------
+  &__image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 40px;
+  }
+
+  // ----------------------------------------------------------
+  // Картинка — изначально увеличена на 10%
+  // ----------------------------------------------------------
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    transition: transform $transition-base;
+  }
+
+  // ----------------------------------------------------------
+  // Тело карточки
+  // ----------------------------------------------------------
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 24px;
+    gap: 12px;
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  &__desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-primary);
+    opacity: 0.8;
+    margin-bottom: auto;
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 20px;
+  }
+}
+
+// ============================================================
+// Адаптив
+// ============================================================
+@media (max-width: 1100px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .menu-card {
+    &__body { padding: 20px; }
+    &__name { font-size: 22px; }
+    &__price { font-size: 22px; }
+  }
+}
+
+@media (max-width: $bp-md) {
+  .menu-page {
+    padding-block: 60px;
+
+    &__title {
+      margin-bottom: 40px;
+    }
+  }
+
+  .menu-tabs {
+    margin-bottom: 40px;
+
+    &__btn {
+      padding: 4px 16px 4px 4px;
+      font-size: 15px;
+    }
+
+    &__icon-wrap {
+      width: 28px;
+      height: 28px;
+    }
+
+    &__icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .menu-card {
+    &__body {
+      padding: 20px;
+      gap: 10px;
+    }
+    &__name { font-size: 20px; }
+    &__desc { font-size: 15px; }
+    &__price {
+      font-size: 20px;
+      margin-top: 16px;
+    }
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .menu-page {
+    padding-block: 40px;
+
+    &__title {
+      font-size: clamp(24px, 7vw, 32px);
+      margin-bottom: 32px;
+    }
+  }
+
+  .menu-tabs {
+    gap: 8px;
+    margin-bottom: 32px;
+
+    &__btn {
+      font-size: 14px;
+    }
+
+    &__icon-wrap {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .menu-card {
+    max-width: 400px;
+    margin-inline: auto;
+    width: 100%;
+  }
+}

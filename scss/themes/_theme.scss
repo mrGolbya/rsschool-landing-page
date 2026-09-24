@@ -1,0 +1,46 @@
+/* ============ LIGHT THEME (по умолчанию) ============ */
+:root,
+[data-theme="light"] {
+  /* Text */
+  --text-primary:   #403F3D;
+  --text-inverse:   #E1D4C9;
+  --text-accent:    #B0907A;
+
+  /* Background */
+  --bg-page:        #E1D4C9;
+  --bg-container:   #665F55;
+  --bg-overlay:     rgba(64, 63, 61, 0.8);   /* #403F3D @ 80% */
+
+  /* Border */
+  --border-primary: #C1B6AD;
+  --border-inverse: #B6AEA7;
+
+  /* Алиасы для удобства */
+  --bg: var(--bg-page);
+  --text: var(--text-primary);
+  --accent: var(--text-accent);
+  --border: var(--border-primary);
+}
+
+/* ============ DARK THEME ============ */
+[data-theme="dark"] {
+  /* Text — те же значения, что и в светлой */
+  --text-primary:   #E1D4C9;
+  --text-inverse:   #E1D4C9;
+  --text-accent:    #B0907A;
+
+  /* Background */
+  --bg-page:        #292826;
+  --bg-container:   rgba(64, 63, 61, 0.3);   /* #403F3D @ 30% */
+  --bg-overlay:     rgba(41, 40, 38, 0.8);   /* #292826 @ 80% */
+
+  /* Border */
+  --border-primary: #665F55;
+  --border-inverse: #C1B6AD;
+
+  /* Алиасы */
+  --bg: var(--bg-page);
+  --text: var(--text-primary);
+  --accent: var(--text-accent);
+  --border: var(--border-primary);
+}

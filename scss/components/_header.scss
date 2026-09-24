@@ -1,0 +1,364 @@
+@use '../base/variables' as *;
+
+// ============================================================
+// Блок: header
+// ============================================================
+.header {
+  padding-block: 20px;
+  background: var(--bg-page);
+  transition: background $transition-base;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    transition: opacity $transition-fast;
+
+    &:hover,
+    &:focus-visible { opacity: 0.7; }
+  }
+
+  &__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: color $transition-fast;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 1px;
+      background: var(--text-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $transition-base;
+    }
+
+    &:hover::after,
+    &:focus-visible::after { transform: scaleX(1); }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+}
+
+// ============================================================
+// Блок: logo
+// ============================================================
+.logo {
+  &__image {
+    display: block;
+    width: 100px;
+    height: auto;
+    transition: opacity $transition-base;
+  }
+}
+
+// Подмена логотипа в тёмной теме
+[data-theme="dark"] .logo__image {
+  content: url('../../img/logo-dark.svg');
+}
+
+// ============================================================
+// Блок: theme-toggle
+// ============================================================
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  height: 48px;
+  padding: 4px;
+  border: 1px solid var(--border-primary);
+  border-radius: $radius-pill;
+  background: var(--bg-page);
+  cursor: pointer;
+  transition: border-color $transition-base, background $transition-base;
+
+  &:hover {
+    border-color: var(--text-accent);
+  }
+
+  // ----------------------------------------------------------
+  // Иконки (солнце и луна) — общее
+  // ----------------------------------------------------------
+  &__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    transition: background $transition-base;
+
+    // Глиф через mask-image
+    &::before {
+      content: '';
+      display: block;
+      width: 22px;
+      height: 22px;
+      background-color: currentColor;
+      -webkit-mask: var(--icon) center / contain no-repeat;
+              mask: var(--icon) center / contain no-repeat;
+      transition: background-color $transition-base;
+    }
+
+    // ---------- SUN ----------
+    &--sun {
+      --icon: url('../img/icons/sun.svg');
+      color: var(--text-inverse);       // цвет глифа — контраст к фону
+      background: var(--text-accent);   // активный круг (светлая тема)
+    }
+
+    // ---------- MOON ----------
+    &--moon {
+      --icon: url('../img/icons/moon.svg');
+      color: var(--text-primary);
+      background: transparent;
+    }
+  }
+
+  // ---------- Hover: неактивная иконка получает круг ----------
+  &:hover &__icon--moon {
+    background: var(--bg-container);
+    color: var(--text-inverse);
+  }
+
+  // ==========================================================
+  // Тёмная тема
+  // ==========================================================
+  [data-theme="dark"] & {
+    .theme-toggle__icon--sun {
+      background: transparent;
+      color: var(--text-primary);
+    }
+
+    .theme-toggle__icon--moon {
+      background: var(--text-accent);
+      color: var(--text-inverse);
+    }
+  }
+
+  // Hover в тёмной теме: солнце получает круг
+  [data-theme="dark"] &:hover .theme-toggle__icon--sun {
+    background: var(--bg-container);
+    color: var(--text-inverse);
+  }
+}
+// ============================================================
+// Блок: menu-link (кнопка "Menu" с чашкой, только на десктопе)
+// ============================================================
+.menu-link {
+  position: relative;               // ← чтобы ::after позиционировался относительно всей кнопки
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;              // ← место под подчёркивание, чтобы не наезжало на текст
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color $transition-fast;
+
+  // Подчёркивание — под ВСЕЙ кнопкой (текст + иконка)
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform $transition-base;
+  }
+
+  &__text {
+    line-height: 1;
+  }
+
+  &__icon {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+
+    -webkit-mask: url('../img/icons/coffee-cup.svg') center / contain no-repeat;
+            mask: url('../img/icons/coffee-cup.svg') center / contain no-repeat;
+  }
+
+  // Hover — подчёркивание под всей кнопкой
+  &:hover,
+  &:focus-visible {
+    &::after { transform: scaleX(1); }
+  }
+}
+
+@media (max-width: $bp-md) {
+  .menu-link { display: none; }
+}
+// ============================================================
+// Блок: burger (виден только на планшете/мобилке)
+// ============================================================
+.burger {
+  display: none; // по умолчанию скрыт
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  color: var(--text-primary);
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--bg-container);
+    color: var(--text-inverse);
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg { display: block; }
+
+    // По умолчанию показываем "закрытое" состояние (бургер-чашку)
+    &--open { display: none; }
+    &--close { display: flex; }
+  }
+
+  // Когда меню открыто — показываем крестик
+  &[aria-expanded="true"] {
+    .burger__icon--open { display: flex; }
+    .burger__icon--close { display: none; }
+  }
+}
+
+.burger {
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border-primary);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-primary);
+  transition:
+    background $transition-base,
+    border-color $transition-base,
+    color $transition-base;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--text-accent);
+    background: var(--bg-container);
+    color: var(--text-inverse);
+  }
+
+  // ---------- Две полоски (симметрично относительно центра кружка) ----------
+  &__lines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    background: currentColor;
+    transition: background $transition-base, transform $transition-base;
+
+    // Вторая полоска — сверху (на -5px от центра)
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -5px;
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: transform $transition-base, top $transition-base;
+    }
+
+    // Третья полоска — снизу (на +5px от центра)
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: transform $transition-base, top $transition-base;
+    }
+  }
+
+  // ---------- Открытое состояние: три полоски → крестик ----------
+  &[aria-expanded="true"] &__lines {
+    background: transparent; // центральная исчезает
+
+    &::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+    &::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// ============================================================
+// Адаптив
+// ============================================================
+@media (max-width: $bp-md) {
+  .header {
+    &__container { gap: 20px; }
+    &__nav { display: none; }   // скрываем десктопную навигацию
+    &__actions { gap: 16px; }
+  }
+  .burger {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .header { padding-block: 16px; }
+}
+
