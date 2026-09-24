@@ -4,7 +4,6 @@
 // Блок: about
 // ============================================================
 .about {
-  // .container даёт ширину и padding-inline
   padding-block: 100px;
 
   // ----------------------------------------------------------
@@ -35,7 +34,7 @@
   }
 
   // ----------------------------------------------------------
-  // Колонка (flex-column с двумя фото)
+  // Колонка
   // ----------------------------------------------------------
   &__column {
     display: flex;
@@ -44,17 +43,34 @@
   }
 
   // ----------------------------------------------------------
-  // Изображения
+  // Контейнер изображения — фиксированного размера, «окно»
   // ----------------------------------------------------------
   &__image {
-    width: 100%;
-    object-fit: cover;
-    border-radius: $radius-md;  // 24px
-    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: $radius-md;      // 24px
+    cursor: pointer;
 
-    // разные высоты, как в макете
-    &--tall  { aspect-ratio: 1 / 1; }     // квадрат ~600×600
-    &--short { aspect-ratio: 600 / 430; } // ~600×430
+    // Разные высоты, как в макете
+    &--tall  { aspect-ratio: 1 / 1; }
+    &--short { aspect-ratio: 600 / 430; }
+
+    // Картинка внутри — изначально чуть больше контейнера
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.1);         // ← изначально увеличена на 10%
+      transform-origin: center center;
+      will-change: transform;
+      transition: transform $transition-base;
+    }
+
+    // Наведение на контейнер — картинка возвращается к 100%
+    &:hover img {
+      transform: scale(1);
+    }
   }
 }
 
@@ -65,17 +81,9 @@
   .about {
     padding-block: 60px;
 
-    &__title {
-      margin-bottom: 32px;
-    }
-
-    &__gallery {
-      gap: 24px;
-    }
-
-    &__column {
-      gap: 24px;
-    }
+    &__title { margin-bottom: 32px; }
+    &__gallery { gap: 24px; }
+    &__column  { gap: 24px; }
   }
 }
 
@@ -84,15 +92,12 @@
     padding-block: 40px;
 
     &__gallery {
-      grid-template-columns: 1fr;  // одна колонка
+      grid-template-columns: 1fr;
       gap: 20px;
     }
 
-    &__column {
-      gap: 20px;
-    }
+    &__column { gap: 20px; }
 
-    // на мобилке — все фото одинаковой «широкой» пропорции
     &__image {
       &--tall  { aspect-ratio: 4 / 3; }
       &--short { aspect-ratio: 4 / 3; }
