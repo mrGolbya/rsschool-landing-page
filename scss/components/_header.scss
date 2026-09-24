@@ -179,61 +179,54 @@
 // Блок: menu-link (кнопка "Menu" с чашкой, только на десктопе)
 // ============================================================
 .menu-link {
+  position: relative;               // ← чтобы ::after позиционировался относительно всей кнопки
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  padding-bottom: 4px;              // ← место под подчёркивание, чтобы не наезжало на текст
   font-size: 16px;
   font-weight: 500;
-  color: var(--text-primary);       // ← цвет текста и иконки, следует за темой
+  color: var(--text-primary);
   transition: color $transition-fast;
 
-  &__text {
-    position: relative;
-    display: inline-block;
-    line-height: 1;
-
-    // Подчёркивание при hover
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -4px;
-      height: 1px;
-      background: currentColor;
-      transform: scaleX(0);
-      transform-origin: left center;
-      transition: transform $transition-base;
-    }
+  // Подчёркивание — под ВСЕЙ кнопкой (текст + иконка)
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform $transition-base;
   }
 
-  // Иконка чашки через mask — цвет наследуется от color
+  &__text {
+    line-height: 1;
+  }
+
   &__icon {
     display: inline-block;
     flex-shrink: 0;
     width: 20px;
     height: 20px;
-    background-color: currentColor;   // ← цвет = color родителя
+    background-color: currentColor;
 
     -webkit-mask: url('../img/icons/coffee-cup.svg') center / contain no-repeat;
             mask: url('../img/icons/coffee-cup.svg') center / contain no-repeat;
-
-    transition: transform $transition-base;
   }
 
+  // Hover — подчёркивание под всей кнопкой
   &:hover,
   &:focus-visible {
-    .menu-link__text::after { transform: scaleX(1); }
-    .menu-link__icon        { transform: rotate(-8deg); }
+    &::after { transform: scaleX(1); }
   }
 }
 
-
-// На планшете/мобилке Menu-link скрывается
 @media (max-width: $bp-md) {
-  .menu-link {
-    display: none;
-  }
+  .menu-link { display: none; }
 }
 // ============================================================
 // Блок: burger (виден только на планшете/мобилке)

@@ -454,30 +454,30 @@ section[id] {
 }
 
 .menu-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  padding-bottom: 4px;
   font-size: 16px;
   font-weight: 500;
   color: var(--text-primary);
   transition: color 0.2s ease;
 }
-.menu-link__text {
-  position: relative;
-  display: inline-block;
-  line-height: 1;
-}
-.menu-link__text::after {
+.menu-link::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -4px;
+  bottom: 0;
   height: 1px;
   background: currentColor;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.3s ease;
+}
+.menu-link__text {
+  line-height: 1;
 }
 .menu-link__icon {
   display: inline-block;
@@ -487,13 +487,9 @@ section[id] {
   background-color: currentColor;
   -webkit-mask: url("../img/icons/coffee-cup.svg") center/contain no-repeat;
   mask: url("../img/icons/coffee-cup.svg") center/contain no-repeat;
-  transition: transform 0.3s ease;
 }
-.menu-link:hover .menu-link__text::after, .menu-link:focus-visible .menu-link__text::after {
+.menu-link:hover::after, .menu-link:focus-visible::after {
   transform: scaleX(1);
-}
-.menu-link:hover .menu-link__icon, .menu-link:focus-visible .menu-link__icon {
-  transform: rotate(-8deg);
 }
 
 @media (max-width: 768px) {
