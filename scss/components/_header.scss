@@ -184,23 +184,50 @@
   gap: 8px;
   font-size: 16px;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--text-primary);       // ← цвет текста и иконки, следует за темой
   transition: color $transition-fast;
+
+  &__text {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+
+    // Подчёркивание при hover
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform $transition-base;
+    }
+  }
+
+  // Иконка чашки через mask — цвет наследуется от color
+  &__icon {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;   // ← цвет = color родителя
+
+    -webkit-mask: url('../img/icons/coffee-cup.svg') center / contain no-repeat;
+            mask: url('../img/icons/coffee-cup.svg') center / contain no-repeat;
+
+    transition: transform $transition-base;
+  }
 
   &:hover,
   &:focus-visible {
-    color: var(--text-accent);
-  }
-
-  &__text {
-    line-height: 1;
-  }
-
-  &__icon {
-    display: block;
-    flex-shrink: 0;
+    .menu-link__text::after { transform: scaleX(1); }
+    .menu-link__icon        { transform: rotate(-8deg); }
   }
 }
+
 
 // На планшете/мобилке Menu-link скрывается
 @media (max-width: $bp-md) {
