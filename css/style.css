@@ -397,7 +397,7 @@ section[id] {
 }
 
 [data-theme=dark] .logo__image {
-  content: url("../../img/logo-dark.svg");
+  content: url("../img/logo-dark.svg");
 }
 
 .theme-toggle {
