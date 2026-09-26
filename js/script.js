@@ -45,3 +45,35 @@ if (burger && nav) {
     link.addEventListener('click', () => setMenu(false));
   });
 }
+
+// СЛАЙДЕР
+const sliderEl = document.querySelector('.slider');
+
+if (sliderEl) {
+  const track = sliderEl.querySelector('.slider__track');
+  const slides = sliderEl.querySelectorAll('.slider__slide');
+  const prevBtn = sliderEl.querySelector('.slider__arrow--prev');
+  const nextBtn = sliderEl.querySelector('.slider__arrow--next');
+  const dots = sliderEl.querySelectorAll('.slider__dot');
+
+  const totalSlides = slides.length;
+  let currentSlide = 0;
+
+  const updateSlider = () => {
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('slider__dot--active', i === currentSlide);
+    });
+  };
+
+  const goToSlide = (index) => {
+    currentSlide = (index + totalSlides) % totalSlides;
+    updateSlider();
+  };
+
+  prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+  nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+  dots.forEach((dot) => dot.addEventListener('click', () => goToSlide(Number(dot.dataset.dot))));
+
+  updateSlider();
+}
