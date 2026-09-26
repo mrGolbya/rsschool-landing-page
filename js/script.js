@@ -44,6 +44,13 @@ if (burger && nav) {
   nav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => setMenu(false));
   });
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') {
+      setMenu(false);
+      burger.focus();
+    }
+  });
 }
 
 // СЛАЙДЕР
