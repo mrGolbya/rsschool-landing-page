@@ -4,6 +4,10 @@
 // Блок: header
 // ============================================================
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
   padding-block: 20px;
   background: var(--bg-page);
   transition: background $transition-base;
@@ -37,6 +41,7 @@
     gap: 40px;
   }
 
+  &__item--mobile { display: none; }
   &__link {
     position: relative;
     font-size: 16px;
@@ -349,13 +354,67 @@
 // ============================================================
 @media (max-width: $bp-md) {
   .header {
+    // position: relative;
+    // z-index: 100;              // свой stacking-context: nav поверх main
+
     &__container { gap: 20px; }
-    &__nav { display: none; }   // скрываем десктопную навигацию
-    &__actions { gap: 16px; }
+    &__actions   { gap: 16px; }
+    &__nav-icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 8px;
+        width: 20px;
+        height: 20px;
+        background-color: currentColor;
+
+        -webkit-mask: url('../img/icons/coffee-cup.svg') center / contain no-repeat;
+                mask: url('../img/icons/coffee-cup.svg') center / contain no-repeat;
+        }
+    // ----------------------------------------------------------
+    // nav превращается в панель, выезжающую справа
+    // ----------------------------------------------------------
+    &__nav {
+      position: fixed;
+      inset: 0;
+      z-index: -1;             // под контентом header, но над main
+
+      display: flex;
+      align-items: center;     // список центрируется по вертикали
+      justify-content: center;
+
+      padding: 100px 24px 40px; // отступ сверху под header
+      background: var(--bg-page);
+      overflow-y: auto;
+
+      // закрытое состояние — за правым краем
+      transform: translateX(100%);
+      transition: transform $transition-base;
+
+      // открытое состояние — на месте
+      &.is-open {
+        transform: translateX(0);
+      }
+    }
+
+    &__list {
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+    }
+
+    // пункт "Menu" — только в мобильной панели
+    &__item--mobile { display: block; }
+
+    &__link {
+      font-size: 24px;
+      font-weight: 500;
+
+      // убираем декоративное подчёркивание в мобильной панели
+      &::after { display: none; }
+    }
   }
-  .burger {
-    display: inline-flex;
-  }
+
+  .burger { display: inline-flex; }
 }
 
 @media (max-width: $bp-sm) {

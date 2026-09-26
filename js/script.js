@@ -1,4 +1,3 @@
-
 // --- ПЕРЕКЛЮЧЕНИЕ ТЕМЫ ---
 const themeBtn = document.querySelector('.theme-toggle');
 
@@ -27,3 +26,22 @@ try {
 
 themeBtn.addEventListener('click', toggleTheme);
 
+// БУРГЕР-МЕНЮ
+const burger = document.querySelector('.burger');
+const nav    = document.querySelector('.header__nav');
+
+if (burger && nav) {
+  const setMenu = (open) => {
+    burger.setAttribute('aria-expanded', String(open));
+    nav.classList.toggle('is-open', open);
+    document.body.classList.toggle('no-scroll', open);
+  };
+
+  burger.addEventListener('click', () => {
+    setMenu(burger.getAttribute('aria-expanded') !== 'true');
+  });
+
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMenu(false));
+  });
+}

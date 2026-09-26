@@ -16,7 +16,10 @@ body {
   color: var(--text-primary);
   transition: background $transition-base, color $transition-base;
 }
-
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none;   // блокирует скролл жестом на тач-устройствах
+}
 main {
   flex: 1 0 auto;   // растягивается, прижимая футер вниз
 }
