@@ -77,3 +77,103 @@ if (sliderEl) {
 
   updateSlider();
 }
+
+// MENU — ленивая загрузка категорий
+(function () {
+  const tabs = document.querySelectorAll('.menu-tabs__btn');
+  const panels = document.querySelectorAll('.menu-panel');
+  if (!tabs.length || !panels.length) return;
+
+  let MENU_DATA = [];
+
+  // Флаги: какие категории уже отрисованы
+  const rendered = {
+    coffee: false,
+    tea: false,
+    dessert: false,
+  };
+
+  // ---- Загрузка JSON ----
+  async function loadMenu() {
+    try {
+      const res = await fetch('./js/data.json');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      MENU_DATA = await res.json();
+    } catch (err) {
+      console.error('Ошибка загрузки data.json:', err);
+    }
+  }
+
+  // ---- Создание карточки ----
+  function createCard(item) {
+    const li = document.createElement('li');
+    li.className = 'menu-card';
+    li.dataset.id = item.id;
+    li.dataset.category = item.category;
+
+    li.innerHTML = `
+      <div class="menu-card__image-wrap">
+        <img class="menu-card__image"
+             src="${item.img}"
+             alt="${item.name}"
+             width="310" height="310" loading="lazy">
+      </div>
+      <div class="menu-card__body">
+        <h3 class="menu-card__name">${item.name}</h3>
+        <p class="menu-card__desc">${item.desc}</p>
+        <span class="menu-card__price">$${item.price.toFixed(2)}</span>
+      </div>
+    `;
+    return li;
+  }
+
+  // ---- Рендер категории (только если ещё не рендерили) ----
+  function renderCategory(category) {
+    if (rendered[category]) return;
+
+    const grid = document.querySelector(`[data-grid="${category}"]`);
+    if (!grid) return;
+
+    const items = MENU_DATA.filter((item) => item.category === category);
+    grid.innerHTML = '';
+    items.forEach((item) => grid.appendChild(createCard(item)));
+
+    rendered[category] = true;        // ← помечаем, что отрисовано
+  }
+
+  // ---- Переключение табов ----
+  function bindTabs() {
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const category = tab.dataset.tab;
+
+        // 1. Ленивая загрузка — рендерим при первом клике
+        renderCategory(category);
+
+        // 2. Активный таб
+        tabs.forEach((t) => {
+          t.classList.toggle('menu-tabs__btn--active', t === tab);
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        });
+
+        // 3. Показать нужную панель
+        panels.forEach((p) => {
+          p.hidden = p.dataset.panel !== category;
+        });
+      });
+    });
+  }
+
+  // ---- Инициализация ----
+  async function init() {
+    await loadMenu();
+
+    // По умолчанию — только Coffee
+    renderCategory('coffee');
+
+    // Tea и Dessert остаются пустыми, пока не кликнут
+    bindTabs();
+  }
+
+  init();
+})();

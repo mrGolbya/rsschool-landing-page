@@ -1,0 +1,248 @@
+[
+  {
+    "id": "irish-coffee",
+    "category": "coffee",
+    "name": "Irish coffee",
+    "desc": "Fragrant black coffee with Jameson Irish whiskey and whipped milk",
+    "price": 7.00,
+    "img": "./img/menu/irish-coffee.png",
+    "sizes": { "s": 7.00, "m": 7.50, "l": 8.00 },
+    "additives": [
+      { "name": "Sugar",    "price": 0.50 },
+      { "name": "Cinnamon", "price": 0.50 },
+      { "name": "Syrup",    "price": 0.50 }
+    ]
+  },
+  {
+    "id": "kahlua-coffee",
+    "category": "coffee",
+    "name": "Kahlua coffee",
+    "desc": "Classic coffee with milk and Kahlua liqueur under a cap of frothed milk",
+    "price": 7.00,
+    "img": "./img/menu/kahlua-coffee.png",
+    "sizes": { "s": 7.00, "m": 7.50, "l": 8.00 },
+    "additives": [
+      { "name": "Sugar",    "price": 0.50 },
+      { "name": "Cinnamon", "price": 0.50 },
+      { "name": "Syrup",    "price": 0.50 }
+    ]
+  },
+  {
+    "id": "honey-raf",
+    "category": "coffee",
+    "name": "Honey raf",
+    "desc": "Espresso with frothed milk, cream and aromatic honey",
+    "price": 5.50,
+    "img": "./img/menu/honey-raf.png",
+    "sizes": { "s": 5.50, "m": 6.00, "l": 6.50 },
+    "additives": [
+      { "name": "Sugar",    "price": 0.50 },
+      { "name": "Cinnamon", "price": 0.50 },
+      { "name": "Syrup",    "price": 0.50 }
+    ]
+  },
+  {
+    "id": "ice-cappuccino",
+    "category": "coffee",
+    "name": "Ice cappuccino",
+    "desc": "Cappuccino with soft thick foam in summer version with ice",
+    "price": 5.00,
+    "img": "./img/menu/ice-cappuccino.png",
+    "sizes": { "s": 5.00, "m": 5.50, "l": 6.00 },
+    "additives": [
+      { "name": "Sugar",    "price": 0.50 },
+      { "name": "Cinnamon", "price": 0.50 },
+      { "name": "Syrup",    "price": 0.50 }
+    ]
+  },
+  {
+    "id": "espresso",
+    "category": "coffee",
+    "name": "Espresso",
+    "desc": "Classic black coffee",
+    "price": 4.50,
+    "img": "./img/menu/espresso.png",
+    "sizes": { "s": 4.50, "m": 5.00, "l": 5.50 },
+    "additives": [
+      { "name": "Sugar",    "price": 0.50 },
+      { "name": "Cinnamon", "price": 0.50 },
+      { "name": "Syrup",    "price": 0.50 }
+    ]
+  },
+  {
+    "id": "latte",
+    "category": "coffee",
+    "name": "Latte",
+    "desc": "Espresso coffee with the addition of steamed milk and dense milk foam",
+    "price": 5.50,
+    "img": "./img/menu/latte.png",
+    "sizes": { "s": 5.50, "m": 6.00, "l": 6.50 },
+    "additives": [
+      { "name": "Sugar",    "price": 0.50 },
+      { "name": "Cinnamon", "price": 0.50 },
+      { "name": "Syrup",    "price": 0.50 }
+    ]
+  },
+  {
+    "id": "latte-macchiato",
+    "category": "coffee",
+    "name": "Latte macchiato",
+    "desc": "Espresso with frothed milk and chocolate",
+    "price": 5.50,
+    "img": "./img/menu/latte-macchiato.png",
+    "sizes": { "s": 5.50, "m": 6.00, "l": 6.50 },
+    "additives": [
+      { "name": "Sugar",    "price": 0.50 },
+      { "name": "Cinnamon", "price": 0.50 },
+      { "name": "Syrup",    "price": 0.50 }
+    ]
+  },
+  {
+    "id": "coffee-cognac",
+    "category": "coffee",
+    "name": "Coffee with cognac",
+    "desc": "Fragrant black coffee with cognac and whipped cream",
+    "price": 6.50,
+    "img": "./img/menu/coffee-cognac.png",
+    "sizes": { "s": 6.50, "m": 7.00, "l": 7.50 },
+    "additives": [
+      { "name": "Sugar",    "price": 0.50 },
+      { "name": "Cinnamon", "price": 0.50 },
+      { "name": "Syrup",    "price": 0.50 }
+    ]
+  },
+
+  {
+    "id": "moroccan",
+    "category": "tea",
+    "name": "Moroccan",
+    "desc": "Fragrant black tea with the addition of tangerine, cinnamon, honey and mint",
+    "price": 4.50,
+    "img": "./img/menu/tea-1.png",
+    "sizes": { "s": 4.50, "m": 5.00, "l": 5.50 },
+    "additives": [
+      { "name": "Sugar", "price": 0.50 },
+      { "name": "Lemon", "price": 0.50 }
+    ]
+  },
+  {
+    "id": "ginger",
+    "category": "tea",
+    "name": "Ginger",
+    "desc": "Original black tea with fresh ginger, lemon and honey",
+    "price": 5.00,
+    "img": "./img/menu/tea-2.png",
+    "sizes": { "s": 5.00, "m": 5.50, "l": 6.00 },
+    "additives": [
+      { "name": "Sugar", "price": 0.50 },
+      { "name": "Lemon", "price": 0.50 }
+    ]
+  },
+  {
+    "id": "cranberry",
+    "category": "tea",
+    "name": "Cranberry",
+    "desc": "Invigorating black tea with cranberry and honey",
+    "price": 5.00,
+    "img": "./img/menu/tea-3.png",
+    "sizes": { "s": 5.00, "m": 5.50, "l": 6.00 },
+    "additives": [
+      { "name": "Sugar", "price": 0.50 },
+      { "name": "Lemon", "price": 0.50 }
+    ]
+  },
+  {
+    "id": "sea-buckthorn",
+    "category": "tea",
+    "name": "Sea buckthorn",
+    "desc": "Soothing sweet black tea with sea buckthorn",
+    "price": 5.00,
+    "img": "./img/menu/tea-4.png",
+    "sizes": { "s": 5.00, "m": 5.50, "l": 6.00 },
+    "additives": [
+      { "name": "Sugar", "price": 0.50 },
+      { "name": "Lemon", "price": 0.50 }
+    ]
+  },
+
+  {
+    "id": "marlie-cheesecake",
+    "category": "dessert",
+    "name": "Marlie cheesecake",
+    "desc": "Cheesecake with mascarpone and coconut flakes",
+    "price": 5.50,
+    "img": "./img/menu/dessert-1.png",
+    "sizes": { "s": 5.50, "m": 6.00, "l": 6.50 },
+    "additives": []
+  },
+  {
+    "id": "red-velvet",
+    "category": "dessert",
+    "name": "Red velvet",
+    "desc": "Tender red velvet cake with cream cheese frosting",
+    "price": 4.00,
+    "img": "./img/menu/dessert-2.png",
+    "sizes": { "s": 4.00, "m": 4.50, "l": 5.00 },
+    "additives": []
+  },
+  {
+    "id": "cheesecake",
+    "category": "dessert",
+    "name": "Cheesecake",
+    "desc": "Classic cheesecake with fresh berries",
+    "price": 4.50,
+    "img": "./img/menu/dessert-3.png",
+    "sizes": { "s": 4.50, "m": 5.00, "l": 5.50 },
+    "additives": []
+  },
+  {
+    "id": "drama-slice",
+    "category": "dessert",
+    "name": "Drama slice",
+    "desc": "Chocolate brownie with salted caramel",
+    "price": 4.00,
+    "img": "./img/menu/dessert-4.png",
+    "sizes": { "s": 4.00, "m": 4.50, "l": 5.00 },
+    "additives": []
+  },
+  {
+    "id": "pancakes",
+    "category": "dessert",
+    "name": "Pancakes",
+    "desc": "Fluffy pancakes with berries and powdered sugar",
+    "price": 5.00,
+    "img": "./img/menu/dessert-5.png",
+    "sizes": { "s": 5.00, "m": 5.50, "l": 6.00 },
+    "additives": []
+  },
+  {
+    "id": "honey-cake",
+    "category": "dessert",
+    "name": "Honey cake",
+    "desc": "Layered honey cake with sour cream frosting",
+    "price": 5.00,
+    "img": "./img/menu/dessert-6.png",
+    "sizes": { "s": 5.00, "m": 5.50, "l": 6.00 },
+    "additives": []
+  },
+  {
+    "id": "chocolate-cake",
+    "category": "dessert",
+    "name": "Chocolate cake",
+    "desc": "Rich chocolate cake with dark chocolate ganache",
+    "price": 5.00,
+    "img": "./img/menu/dessert-7.png",
+    "sizes": { "s": 5.00, "m": 5.50, "l": 6.00 },
+    "additives": []
+  },
+  {
+    "id": "black-forest",
+    "category": "dessert",
+    "name": "Black forest",
+    "desc": "Classic German cake with cherries and cream",
+    "price": 6.50,
+    "img": "./img/menu/dessert-8.png",
+    "sizes": { "s": 6.50, "m": 7.00, "l": 7.50 },
+    "additives": []
+  }
+]
