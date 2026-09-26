@@ -1,0 +1,217 @@
+@use '../base/variables' as *;
+
+// ============================================================
+// Блок: slider
+// ============================================================
+.slider {
+  // .container даёт max-width: 1360px, padding-inline: 40px
+  padding-block: 100px;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: clamp(32px, 4vw, 60px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text-primary);
+
+    em {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--text-accent);
+    }
+  }
+
+  // ----------------------------------------------------------
+  // Обёртка: [arrow] [viewport] [arrow]
+  // ----------------------------------------------------------
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  // ----------------------------------------------------------
+// Стрелки
+// ----------------------------------------------------------
+&__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 60px;
+  height: 60px;
+  padding: 0;
+
+  background: transparent;
+  border: 1px solid var(--border-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    background $transition-base,
+    border-color $transition-base;
+
+  // Иконка стрелки
+  &-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    // SVG экспортированы в тёмном цвете → на тёмном фоне при hover
+    // их надо инвертировать. Если SVG уже светлые — фильтр не нужен.
+    transition: filter $transition-base;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: var(--bg-container);
+    border-color: var(--bg-container);
+
+    .slider__arrow-icon {
+      filter: invert(1) brightness(2);
+    }
+  }
+}
+  // ----------------------------------------------------------
+  // Область просмотра слайдов
+  // ----------------------------------------------------------
+  &__viewport {
+    flex: 1;
+    max-width: 480px;
+    margin-inline: auto;
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform $transition-base;
+    // JS во второй части будет менять transform
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 330px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  &__desc {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    opacity: 0.8;
+    max-width: 420px;
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  // ----------------------------------------------------------
+  // Точки-индикаторы
+  // ----------------------------------------------------------
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+  }
+
+  &__dot {
+    width: 40px;
+    height: 4px;
+    padding: 0;
+    border: none;
+    border-radius: 2px;
+    background: var(--border-primary);
+    cursor: pointer;
+    transition: background $transition-base, width $transition-base;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--text-accent);
+    }
+
+    &--active {
+      background: var(--text-primary);
+    }
+  }
+}
+
+// ============================================================
+// Адаптив
+// ============================================================
+@media (max-width: $bp-md) {
+  .slider {
+    padding-block: 60px;
+
+    &__title {
+      margin-bottom: 40px;
+    }
+
+    &__wrapper {
+      gap: 20px;
+    }
+
+    &__arrow {
+      width: 48px;
+      height: 48px;
+
+      svg { width: 20px; height: 20px; }
+    }
+
+    &__image {
+      max-width: 260px;
+    }
+
+    &__name {
+      font-size: 20px;
+    }
+
+    &__price {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .slider {
+    padding-block: 40px;
+
+    &__wrapper {
+      // На мобилке — вертикально: стрелки внизу под слайдом
+      flex-direction: column-reverse;
+      gap: 24px;
+    }
+
+    &__viewport {
+      max-width: 100%;
+    }
+
+    &__image {
+      max-width: 220px;
+    }
+
+    &__desc {
+      font-size: 14px;
+    }
+  }
+}

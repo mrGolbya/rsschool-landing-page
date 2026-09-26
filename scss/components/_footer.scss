@@ -1,0 +1,181 @@
+@use '../base/variables' as *;
+
+// ============================================================
+// Блок: footer
+// ============================================================
+.footer {
+  margin-top: 100px;
+  padding-bottom: 40px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 100px 60px;
+    padding: 100px;
+    background: var(--bg-container);
+    color: var(--text-inverse);
+    border-radius: $radius-card;
+    transition: background $transition-base;
+  }
+
+  // ----------------------------------------------------------
+  // Левая колонка
+  // ----------------------------------------------------------
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex: 1 1 480px;
+    max-width: 630px;
+  }
+
+  &__slogan {
+    font-size: clamp(32px, 4vw, 60px);
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--text-inverse);
+
+    em {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--text-accent);
+    }
+  }
+
+  // ----------------------------------------------------------
+  // Соцсети
+  // ----------------------------------------------------------
+  &__socials {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--text-inverse);
+    border-radius: 50%;
+    background: transparent;
+    transition:
+      background $transition-base,
+      border-color $transition-base;
+
+    img {
+      display: block;
+      width: 24px;
+      height: 24px;
+      transition: filter $transition-base;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: var(--text-inverse);
+      border-color: var(--text-inverse);
+
+      img {
+        // иконка тёмная на светлом фоне
+        filter: invert(1) brightness(0.3);
+      }
+    }
+  }
+
+  // ----------------------------------------------------------
+  // Правая колонка
+  // ----------------------------------------------------------
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex: 0 1 360px;
+  }
+
+  &__heading {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-inverse);
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__contact-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    // иконки контактов — светлые, как в макете (без инверсии)
+  }
+
+  &__contact-text {
+    font-size: 16px;
+    color: var(--text-inverse);
+    text-decoration: none;
+    transition: text-decoration-color $transition-fast;
+  }
+
+  // ----------------------------------------------------------
+  // Hover: подчёркивание ТОЛЬКО под текстом
+  // ----------------------------------------------------------
+  &__contact-link {
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+  }
+}
+
+// ============================================================
+// Адаптив
+// ============================================================
+@media (max-width: $bp-md) {
+  .footer {
+    margin-top: 60px;
+    padding-bottom: 24px;
+
+    &__container {
+      flex-direction: column;
+      gap: 40px;
+      padding: 60px 24px;
+    }
+
+    &__left,
+    &__right {
+      flex: 0 1 auto;
+      max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .footer {
+    &__container {
+      padding: 40px 20px;
+      border-radius: $radius-md;
+    }
+
+    &__social-link {
+      width: 48px;
+      height: 48px;
+
+      img { width: 20px; height: 20px; }
+    }
+
+    &__heading { font-size: 20px; }
+    &__contact-text { font-size: 14px; }
+  }
+}

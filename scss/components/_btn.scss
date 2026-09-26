@@ -1,0 +1,61 @@
+@use '../base/variables' as *;
+
+// ============================================================
+// Блок: btn
+// ============================================================
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 20px 60px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+
+  color: var(--text-primary);
+  background: var(--bg-page);
+  border: none;
+  border-radius: $radius-pill;
+  cursor: pointer;
+  transition:
+    background $transition-base,
+    color $transition-base;
+
+  &__text {
+    display: inline-block;
+    transition: transform $transition-base;
+  }
+
+  // ---------- Иконка — изначально скрыта ----------
+  &__icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+
+
+    width: 0;
+    margin-left: 0;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition:
+      width $transition-base,
+      margin-left $transition-base,
+      opacity $transition-base,
+      transform $transition-base;
+  }
+
+  // ---------- Hover ----------
+  &:hover,
+  &:focus-visible {
+    background: var(--text-inverse);
+
+    .btn__icon {
+      width: 20px;
+      margin-left: 4px;
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}

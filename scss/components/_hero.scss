@@ -1,0 +1,110 @@
+@use '../base/variables' as *;
+
+// ============================================================
+// Блок: hero
+// ============================================================
+.hero {
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 640px;
+    padding: 100px;
+
+    overflow: hidden;
+    border-radius: $radius-card;
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  // ---------- Усилили затемнение ----------
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.55) 35%,
+      rgba(0, 0, 0, 0.15) 65%,
+      rgba(0, 0, 0, 0) 85%
+    );
+  }
+
+  // ---------- Контент ----------
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;              // ← было 40px, теперь ближе к макету
+
+    max-width: 530px;       // ← было 580px, теперь уже
+    color: var(--text-inverse);
+  }
+
+  &__title {
+    font-size: clamp(38px, 4.5vw, 64px);   // ← было 72px максимум
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--text-inverse);
+  }
+
+  &__title-accent {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--text-accent);
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-inverse);
+    opacity: 0.9;
+    max-width: 460px;
+  }
+
+  &__btn {
+    align-self: flex-start;
+    margin-top: 10px;       // ← небольшой доп. отступ до кнопки
+  }
+}
+
+// ============================================================
+// Адаптив
+// ============================================================
+@media (max-width: $bp-md) {
+  .hero {
+    &__container {
+      min-height: 540px;
+      padding: 60px 40px;
+    }
+
+    &__content,
+    &__text {
+      max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .hero {
+    &__container {
+      min-height: 460px;
+      padding: 40px 24px;
+    }
+
+    &__title {
+      font-size: clamp(32px, 8vw, 42px);
+    }
+  }
+}
