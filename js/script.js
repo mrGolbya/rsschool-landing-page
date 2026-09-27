@@ -248,51 +248,53 @@ function initProductModal() {
   `;
   document.body.appendChild(modal);
 
-  const $ = (sel) => modal.querySelector(sel);
-  let item = null;
+  // короткая функция-обёртка для поиска внутри модалки
+  const query = (selector) => modal.querySelector(selector);
+
+  let currentItem = null;
 
   function open(product) {
-    item = product;
+    currentItem = product;
 
-    const base = Number(product.price);
+    const basePrice = Number(product.price);
 
-    $('[data-img]').src           = product.img;
-    $('[data-img]').alt           = product.name;
-    $('[data-title]').textContent = product.name;
-    $('[data-desc]').textContent  = product.description;
+    query('[data-img]').src           = product.img;
+    query('[data-img]').alt           = product.name;
+    query('[data-title]').textContent = product.name;
+    query('[data-desc]').textContent  = product.description;
 
     // ---------- Sizes ----------
-    $('[data-sizes-group]').hidden = !product.sizes;
-    $('[data-sizes]').innerHTML = Object.entries(product.sizes || {})
-      .map(([key, s]) => `
+    query('[data-sizes-group]').hidden = !product.sizes;
+    query('[data-sizes]').innerHTML = Object.entries(product.sizes || {})
+      .map(([key, size]) => `
         <button class="modal__option" type="button"
                 data-size="${key}"
-                data-price="${base + Number(s['add-price'])}">
+                data-price="${basePrice + Number(size['add-price'])}">
           <span class="modal__option-icon">${key.toUpperCase()}</span>
-          <span class="modal__option-text">${s.size}</span>
+          <span class="modal__option-text">${size.size}</span>
         </button>
       `).join('');
 
     // ---------- Additives ----------
-    $('[data-adds-group]').hidden = !product.additives?.length;
-    $('[data-adds]').innerHTML = (product.additives || [])
-      .map((a, i) => `
+    query('[data-adds-group]').hidden = !product.additives?.length;
+    query('[data-adds]').innerHTML = (product.additives || [])
+      .map((additive, i) => `
         <button class="modal__option" type="button"
                 data-add
-                data-price="${a['add-price']}">
+                data-price="${additive['add-price']}">
           <span class="modal__option-icon">${i + 1}</span>
-          <span class="modal__option-text">${a.name}</span>
+          <span class="modal__option-text">${additive.name}</span>
         </button>
       `).join('');
 
     // ---------- Note ----------
-    $('[data-note]').textContent = product.additives?.length
+    query('[data-note]').textContent = product.additives?.length
       ? `Add ${product.additives.map((a) => a.name.toLowerCase()).join(', ')} for an extra charge.`
       : `Made with fresh ingredients.`;
 
     // первый размер — активный
-    modal.querySelectorAll('[data-size]').forEach((b, i) => {
-      b.classList.toggle('is-active', i === 0);
+    modal.querySelectorAll('[data-size]').forEach((btn, i) => {
+      btn.classList.toggle('is-active', i === 0);
     });
 
     updateTotal();
@@ -302,20 +304,22 @@ function initProductModal() {
   }
 
   function updateTotal() {
-    const sizePrice =
-      +modal.querySelector('[data-size].is-active')?.dataset.price ||
-      Number(item.price);
+    const activeSize = modal.querySelector('[data-size].is-active');
+    const sizePrice  = Number(activeSize?.dataset.price) || Number(currentItem.price);
 
-    const addPrice = [...modal.querySelectorAll('[data-add].is-active')]
-      .reduce((sum, b) => sum + (+b.dataset.price || 0), 0);
+    const additivesPrice = [...modal.querySelectorAll('[data-add].is-active')]
+      .reduce((sum, btn) => sum + (Number(btn.dataset.price) || 0), 0);
 
-    $('[data-total]').textContent = `$${(sizePrice + addPrice).toFixed(2)}`;
+    query('[data-total]').textContent = `$${(sizePrice + additivesPrice).toFixed(2)}`;
   }
 
   function close() {
     modal.classList.remove('is-open');
     document.body.classList.remove('no-scroll');
-    setTimeout(() => { modal.hidden = true; item = null; }, 250);
+    setTimeout(() => {
+      modal.hidden = true;
+      currentItem = null;
+    }, 250);
   }
 
   // ---------- Делегированный обработчик ----------
@@ -332,18 +336,18 @@ function initProductModal() {
     if (e.target.closest('[data-close]')) { close(); return; }
 
     // размер — radio
-    const sizeBtn = e.target.closest('[data-size]');
-    if (sizeBtn) {
-      modal.querySelectorAll('[data-size]').forEach((b) =>
-        b.classList.toggle('is-active', b === sizeBtn));
+    const sizeButton = e.target.closest('[data-size]');
+    if (sizeButton) {
+      modal.querySelectorAll('[data-size]').forEach((btn) =>
+        btn.classList.toggle('is-active', btn === sizeButton));
       updateTotal();
       return;
     }
 
     // добавка — toggle
-    const addBtn = e.target.closest('[data-add]');
-    if (addBtn) {
-      addBtn.classList.toggle('is-active');
+    const additiveButton = e.target.closest('[data-add]');
+    if (additiveButton) {
+      additiveButton.classList.toggle('is-active');
       updateTotal();
     }
   });
