@@ -1398,6 +1398,12 @@ section[id] {
     font-size: 15px;
   }
 }
+@media (max-width: 580px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
 @media (max-width: 380px) {
   .menu-page {
     padding-block: 40px;
@@ -1420,10 +1426,6 @@ section[id] {
   .menu-tabs__icon {
     width: 16px;
     height: 16px;
-  }
-  .menu-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
   }
   .menu-card {
     max-width: 400px;
