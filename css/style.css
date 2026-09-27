@@ -910,6 +910,7 @@ section[id] {
     gap: 20px;
   }
   .slider__arrow {
+    display: none;
     width: 48px;
     height: 48px;
   }
@@ -1040,7 +1041,8 @@ section[id] {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  flex: 0 1 630px;
+  flex: 1 1 480px;
+  min-width: 0;
   max-width: 630px;
 }
 .app__title {
@@ -1119,7 +1121,9 @@ section[id] {
   font-weight: 600;
 }
 .app__mockup {
-  flex: 0 0 640px;
+  flex: 1 1 480px;
+  min-width: 0;
+  max-width: 640px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1133,8 +1137,9 @@ section[id] {
 
 @media (max-width: 768px) {
   .app {
-    flex-direction: column-reverse;
-    gap: 40px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
     padding-block: 60px;
   }
   .app__content {
@@ -1142,16 +1147,25 @@ section[id] {
     max-width: 100%;
     align-items: center;
     text-align: center;
+    gap: 24px;
+  }
+  .app__title {
+    font-size: clamp(28px, 5vw, 44px);
   }
   .app__text {
     max-width: 100%;
   }
   .app__stores {
     justify-content: center;
+    flex-wrap: wrap;
   }
   .app__mockup {
     flex: 1 1 auto;
-    max-width: 500px;
+    max-width: 100%;
+  }
+  .app__mockup-image {
+    max-width: 480px;
+    margin-inline: auto;
   }
 }
 @media (max-width: 380px) {
@@ -1168,6 +1182,9 @@ section[id] {
   }
   .app__store-btn {
     justify-content: center;
+  }
+  .app__mockup-image {
+    max-width: 320px;
   }
 }
 .menu-page {
