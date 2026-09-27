@@ -1145,8 +1145,8 @@ section[id] {
   .app__content {
     flex: 1 1 auto;
     max-width: 100%;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     gap: 24px;
   }
   .app__title {
