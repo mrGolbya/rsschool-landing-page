@@ -15,6 +15,11 @@
   --border-primary: #C1B6AD;
   --border-inverse: #B6AEA7;
 
+  /* Inverse surface — для активных pill-кнопок и т.п. */
+  --surface-inverse:     #403F3D;
+  --on-surface-inverse:  #E1D4C9;
+  --icon-on-surface:     #E1D4C9;
+
   /* Алиасы для удобства */
   --bg: var(--bg-page);
   --text: var(--text-primary);
@@ -24,7 +29,7 @@
 
 /* ============ DARK THEME ============ */
 [data-theme="dark"] {
-  /* Text — те же значения, что и в светлой */
+  /* Text */
   --text-primary:   #E1D4C9;
   --text-inverse:   #E1D4C9;
   --text-accent:    #B0907A;
@@ -37,6 +42,11 @@
   /* Border */
   --border-primary: #665F55;
   --border-inverse: #C1B6AD;
+
+  /* Inverse surface */
+  --surface-inverse:     #E1D4C9;
+  --on-surface-inverse:  #403F3D;
+  --icon-on-surface:     #403F3D;
 
   /* Алиасы */
   --bg: var(--bg-page);
