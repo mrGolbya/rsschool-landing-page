@@ -17,7 +17,8 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    flex: 0 1 630px;
+    flex: 1 1 480px;
+    min-width: 0;
     max-width: 630px;
   }
 
@@ -62,7 +63,7 @@
     border: 1px solid var(--border-primary);
     border-radius: $radius-pill;
 
-    color: var(--text-primary);       // ← иконка + текст берут цвет отсюда
+    color: var(--text-primary);
     transition:
       background $transition-base,
       border-color $transition-base,
@@ -72,7 +73,7 @@
     &:focus-visible {
       background: var(--bg-container);
       border-color: var(--bg-container);
-      color: var(--text-inverse);     // ← цвет меняется в одном месте
+      color: var(--text-inverse);
     }
   }
 
@@ -85,8 +86,6 @@
     height: 28px;
     flex-shrink: 0;
 
-    // Форма иконки рисуется через mask,
-    // цвет — через background-color: currentColor
     &::before {
       content: '';
       display: block;
@@ -120,20 +119,20 @@
   &__store-label {
     font-size: 11px;
     font-weight: 400;
-    // цвет наследуется от .app__store-btn
   }
 
   &__store-name {
     font-size: 18px;
     font-weight: 600;
-    // цвет наследуется от .app__store-btn
   }
 
   // ----------------------------------------------------------
   // Мокап
   // ----------------------------------------------------------
   &__mockup {
-    flex: 0 0 640px;
+    flex: 1 1 480px;
+    min-width: 0;
+    max-width: 640px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,23 +151,31 @@
 // ============================================================
 @media (max-width: $bp-md) {
   .app {
-    flex-direction: column-reverse;
-    gap: 40px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
     padding-block: 60px;
 
     &__content {
       flex: 1 1 auto;
       max-width: 100%;
-      align-items: center;
-      text-align: center;
+      align-items: flex-start;
+      text-align: left;
+      gap: 24px;
     }
 
-    &__text { max-width: 100%; }
-    &__stores { justify-content: center; }
+    &__title { font-size: clamp(28px, 5vw, 44px); }
+    &__text  { max-width: 100%; }
+    &__stores { justify-content: center; flex-wrap: wrap; }
 
     &__mockup {
       flex: 1 1 auto;
-      max-width: 500px;
+      max-width: 100%;
+    }
+
+    &__mockup-image {
+      max-width: 480px;
+      margin-inline: auto;
     }
   }
 }
@@ -177,9 +184,7 @@
   .app {
     padding-block: 40px;
 
-    &__title {
-      font-size: clamp(26px, 8vw, 36px);
-    }
+    &__title { font-size: clamp(26px, 8vw, 36px); }
 
     &__stores {
       flex-direction: column;
@@ -187,9 +192,8 @@
       width: 100%;
     }
 
-    &__store-btn {
-      justify-content: center;
-    }
+    &__store-btn { justify-content: center; }
 
+    &__mockup-image { max-width: 320px; }
   }
 }

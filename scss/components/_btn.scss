@@ -50,7 +50,7 @@
   &:hover,
   &:focus-visible {
     background: var(--text-inverse);
-
+    color: var(--on-surface-inverse);
     .btn__icon {
       width: 20px;
       margin-left: 4px;

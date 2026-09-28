@@ -192,7 +192,45 @@
     margin-top: 20px;
   }
 }
+// Блок: menu-more — кнопка "Show more"
+// ============================================================
+.menu-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 14px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: transparent;
+    border: 1px solid var(--border-primary);
+    border-radius: $radius-pill;
+    cursor: pointer;
+
+    transition:
+      background $transition-base,
+      color $transition-base,
+      border-color $transition-base;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--text-primary);
+      color: var(--bg-page);
+      border-color: var(--text-primary);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
 // ============================================================
 // Адаптив
 // ============================================================
@@ -253,8 +291,23 @@
       margin-top: 16px;
     }
   }
+  .menu-more {
+    margin-top: 32px;
+
+    &__btn {
+      padding: 12px 32px;
+      font-size: 15px;
+    }
+  }
 }
 
+
+@media (max-width: 580px) {
+    .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
 @media (max-width: $bp-sm) {
   .menu-page {
     padding-block: 40px;
@@ -284,14 +337,15 @@
     }
   }
 
-  .menu-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
 
   .menu-card {
     max-width: 400px;
     margin-inline: auto;
     width: 100%;
   }
+}
+.menu-card[hidden],
+.menu-more__btn[hidden],
+.menu-panel[hidden] {
+  display: none;
 }

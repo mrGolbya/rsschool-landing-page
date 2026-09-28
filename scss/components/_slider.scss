@@ -46,7 +46,7 @@
   padding: 0;
 
   background: transparent;
-  border: 1px solid var(--border-primary);
+  border: 1px solid var(--border-inverse);
   border-radius: 50%;
   cursor: pointer;
   transition:
@@ -58,11 +58,10 @@
     display: block;
     width: 24px;
     height: 24px;
-    // SVG экспортированы в тёмном цвете → на тёмном фоне при hover
-    // их надо инвертировать. Если SVG уже светлые — фильтр не нужен.
+    filter: brightness(2);
     transition: filter $transition-base;
   }
-
+  
   &:hover,
   &:focus-visible {
     background: var(--bg-container);
@@ -86,7 +85,6 @@
   &__track {
     display: flex;
     transition: transform $transition-base;
-    // JS во второй части будет менять transform
   }
 
   &__slide {
@@ -172,6 +170,7 @@
     }
 
     &__arrow {
+      display: none;
       width: 48px;
       height: 48px;
 
@@ -197,7 +196,6 @@
     padding-block: 40px;
 
     &__wrapper {
-      // На мобилке — вертикально: стрелки внизу под слайдом
       flex-direction: column-reverse;
       gap: 24px;
     }

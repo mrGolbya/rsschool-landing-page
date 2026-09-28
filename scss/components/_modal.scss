@@ -1,0 +1,275 @@
+@use '../base/variables' as *;
+
+
+// Блок: modal
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  &[hidden] { display: none; }
+
+  // ---------- Затемнение ----------
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(64, 63, 61, 0.5);
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  // ---------- Диалог ----------
+  &__dialog {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 800px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+
+    background: var(--bg-page);
+    border-radius: $radius-md;
+    padding: 16px;
+
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    transition:
+      opacity $transition-base,
+      transform $transition-base;
+  }
+
+  &.is-open {
+    .modal__overlay { opacity: 1; }
+    .modal__dialog  { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  // ---------- Сетка ----------
+  &__content {
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  // ---------- Медиа ----------
+  &__media {
+    width: 310px;
+    height: 310px;
+    overflow: hidden;
+    border-radius: $radius-md;
+    flex-shrink: 0;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  // ---------- Текстовая колонка ----------
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  &__desc {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    opacity: 0.8;
+  }
+
+  // ---------- Группы ----------
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__group-title {
+    font-size: 16px;
+    color: var(--text-primary);
+    opacity: 0.8;
+  }
+
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  // ---------- Кнопка-опция ----------
+  &__option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 6px 20px 6px 6px;
+    min-height: 44px;
+
+    border: 1px solid var(--border-primary);
+    border-radius: $radius-pill;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    transition:
+      background $transition-fast,
+      border-color $transition-fast,
+      color $transition-fast;
+
+    &:hover { border-color: var(--text-accent); }
+
+    &-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+
+      background: var(--border-primary);
+      color: var(--text-primary);
+
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1;
+      transition:
+        background $transition-fast,
+        color $transition-fast;
+    }
+
+    &-text {
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+
+    // Активное состояние — работает через переменные обеих тем
+    &.is-active {
+      background: var(--surface-inverse);
+      border-color: var(--surface-inverse);
+      color: var(--on-surface-inverse);
+
+      .modal__option-icon {
+        background: var(--icon-on-surface);
+        color: var(--surface-inverse);
+      }
+    }
+  }
+
+  // ---------- Итого ----------
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-primary);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  // ---------- Инфо-плашка ----------
+  &__note {
+    position: relative;
+    padding-left: 28px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--text-primary);
+    opacity: 0.7;
+
+    &::before {
+      content: 'i';
+      position: absolute;
+      left: 0;
+      top: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 600;
+    }
+  }
+
+  // ---------- Кнопка Close ----------
+  &__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 44px;
+    padding: 12px 40px;
+    margin-top: auto;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: transparent;
+    border: 1px solid var(--text-primary);
+    border-radius: $radius-pill;
+    transition:
+      background $transition-fast,
+      color $transition-fast,
+      border-color $transition-fast;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--bg-container);
+      border-color: var(--bg-container);
+      color: var(--text-inverse);
+    }
+  }
+}
+
+
+// Адаптив
+
+@media (max-width: $bp-md) {
+  .modal {
+    &__dialog { padding: 24px; }
+
+    &__content {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    &__media { display: none; }   // картинку на мобилке убираем
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .modal {
+    padding: 12px;
+
+    &__dialog { padding: 20px; }
+    &__title  { font-size: 20px; }
+    &__total  { font-size: 18px; }
+  }
+}
