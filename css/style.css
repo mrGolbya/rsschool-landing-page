@@ -778,6 +778,7 @@ section[id] {
 }
 .btn:hover, .btn:focus-visible {
   background: var(--text-inverse);
+  color: var(--on-surface-inverse);
 }
 .btn:hover .btn__icon, .btn:focus-visible .btn__icon {
   width: 20px;
@@ -817,7 +818,7 @@ section[id] {
   height: 60px;
   padding: 0;
   background: transparent;
-  border: 1px solid var(--border-primary);
+  border: 1px solid var(--border-inverse);
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.3s ease, border-color 0.3s ease;
@@ -826,6 +827,7 @@ section[id] {
   display: block;
   width: 24px;
   height: 24px;
+  filter: brightness(2);
   transition: filter 0.3s ease;
 }
 .slider__arrow:hover, .slider__arrow:focus-visible {
